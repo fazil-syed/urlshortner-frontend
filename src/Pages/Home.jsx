@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
-import Url from "../Components/Url";
+import { useEffect, useState } from "react";
 import { Form } from "../Components/Form";
-import { BrowserRouter } from "react-router-dom";
+import Url from "../Components/Url";
 function Home() {
   const [shortUrl, setshortUrl] = useState(null);
   const [url, setUrl] = useState(null);
   useEffect(() => {
     const updateUrl = async () => {
       await axios
-        .post("http://localhost:5000/api/genurl/", {
+        .post("https://urlshortner-backend-omega.vercel.app/api/genurl/", {
           longUrl: url,
         })
         .then((response) => {

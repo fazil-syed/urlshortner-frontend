@@ -9,14 +9,16 @@ export const Redirect = () => {
     const getUrl = async () => {
       console.log(urlCode);
       await axios
-        .get(`http://localhost:5000/api/geturl/?code=${urlCode}`)
+        .get(
+          `https://urlshortner-backend-omega.vercel.app/api/geturl/?code=${urlCode}`
+        )
         .then((res) => {
           setlongUrl(res.data.longUrl);
         })
         .catch((e) => console.log(e));
     };
     getUrl();
-  }, []);
+  });
   if (longUrl != null) return <div>{window.location.replace(longUrl)}</div>;
   else
     return (
